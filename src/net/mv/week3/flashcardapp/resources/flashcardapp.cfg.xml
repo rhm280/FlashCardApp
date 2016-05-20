@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+    "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+	<session-factory>
+
+		<!-- Dialect to use when communicating with a database -->
+		<property name="hibernate.dialect">
+			org.hibernate.dialect.Oracle10gDialect
+		</property>
+
+		<!-- The driver class .jar file to use. ojdbc6.jar for Oracle 10g -->
+		<property name="hibernate.connection.driver_class">
+			oracle.jdbc.driver.OracleDriver
+		</property>
+
+		<property name="hibernate.connection.url">
+			jdbc:oracle:thin:@localhost:1521:xe
+		</property>
+
+		<property name="hibernate.connection.username">
+			admin
+		</property>
+
+		<property name="hibernate.connection.password">
+			admin
+		</property>
+
+		<!-- Hibernate setting to output SQL query to console -->
+		<property name="hibernate.show_sql">
+			true
+		</property>
+
+		<!-- Hibernate setting to prettify SQL query in console -->
+		<property name="hibernate.format_sql">
+			true
+		</property>
+		
+		<!-- Hibernate setting to auto-generate tables and sequences -->
+		<property name="hibernate.hbm2ddl.auto">
+			update
+		</property>
+
+		<mapping resource="net/mv/week3/flashcardapp/resources/mapping/flashcarduser.hbm.xml" />
+		<mapping resource="net/mv/week3/flashcardapp/resources/mapping/flashcard.hbm.xml" />
+
+	</session-factory>
+
+</hibernate-configuration>

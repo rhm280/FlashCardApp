@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="net.mv.week3.flashcardapp.flashcarduser.domain.FlashCardUser"
+		table="FLASH_CARD_USER">
+
+		<id name="userId" type="long" column="F_C_U_ID">
+			<generator class="sequence">
+				<param name="sequence">
+					FLASH_CARD_USER_SEQ
+				</param>
+			</generator>
+		</id>
+
+		<property name="username" type="string" unique="true"></property>
+		<property name="password" type="string"></property>
+
+		<!-- specifying the foreign key -->
+		<set name="cards" table="FLASH_CARD" inverse="true" lazy="false"
+			fetch="select">
+			<key>
+				<column name="F_C_U_ID" not-null="true"></column>
+			</key>
+			<one-to-many class="net.mv.week3.flashcardapp.flashcard.domain.FlashCard" />
+		</set>
+
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="net.mv.week3.flashcardapp.flashcard.domain.FlashCard"
+		table="FLASH_CARD">
+		
+		<id name="userId" column="F_C_ID" type="long">
+			<generator class="sequence">
+				<param name="sequence">
+					FLASH_CARD_SEQ
+				</param>
+			</generator>
+		</id>
+
+		<many-to-one name="user" class="net.mv.week3.flashcardapp.flashcarduser.domain.FlashCardUser"
+			fetch="select">
+			<column name="F_C_U_ID" not-null="true"></column>
+		</many-to-one>
+
+		<property name="question" type="string" column="QUESTION"></property>
+		<property name="answer" type="string" column="ANSWER"></property>
+	</class>
+</hibernate-mapping>
